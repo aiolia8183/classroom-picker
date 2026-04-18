@@ -262,7 +262,7 @@ export default function App() {
         showSettings 
           ? (isFullscreen ? 'lg:grid-cols-[450px_1fr_400px]' : 'lg:grid-cols-[300px_1fr_280px]') 
           : (isFullscreen ? 'lg:grid-cols-[1fr_400px]' : 'lg:grid-cols-[1fr_280px]')
-      } gap-5 md:gap-8 w-full ${isFullscreen ? 'max-w-full px-8 xl:px-12 h-[calc(100vh-100px)] overflow-hidden items-stretch content-stretch pb-12' : 'max-w-[1400px] content-start'} transition-all duration-300`}>
+      } gap-5 md:gap-8 w-full ${isFullscreen ? 'max-w-full px-4 md:px-8 xl:px-12 lg:h-[calc(100vh-100px)] overflow-y-auto lg:overflow-hidden items-stretch content-stretch pb-12' : 'max-w-[1400px] content-start'} transition-all duration-300`}>
         
         {/* Settings Sidebar */}
         <AnimatePresence>
@@ -355,20 +355,20 @@ export default function App() {
               )}
             </AnimatePresence>
 
-            <div className={`relative flex items-center justify-center w-full bg-white border-[#2B2D42] mx-auto transition-all ${isFullscreen ? 'max-w-[700px] flex-1 min-h-[150px] max-h-[400px] shrink overflow-hidden border-[8px] rounded-[48px] shadow-[16px_16px_0_#FF4D6D] mb-12' : 'max-w-[380px] h-[220px] shrink-0 border-[5px] rounded-[30px] shadow-[12px_12px_0_#FF4D6D] mb-10'} ${isDrawing ? 'animate-pulse' : ''}`}>
-              <div className={`absolute left-1/2 -translate-x-1/2 bg-[#FFB703] text-[#2B2D42] border-[#2B2D42] font-black tracking-wider uppercase z-10 transition-all ${isFullscreen ? '-top-6 px-10 py-2 border-[4px] text-2xl' : '-top-5 px-5 py-1 border-[3px] text-sm md:text-base'}`}>
+            <div className={`relative flex items-center justify-center w-full bg-white border-[#2B2D42] mx-auto transition-all ${isFullscreen ? 'max-w-[700px] flex-1 min-h-[150px] max-h-[400px] shrink border-[8px] rounded-[36px] md:rounded-[48px] shadow-[16px_16px_0_#FF4D6D] mb-12' : 'max-w-[380px] h-[220px] shrink-0 border-[5px] rounded-[30px] shadow-[12px_12px_0_#FF4D6D] mb-10'} ${isDrawing ? 'animate-pulse' : ''}`}>
+              <div className={`absolute left-1/2 -translate-x-1/2 bg-[#FFB703] text-[#2B2D42] border-[#2B2D42] font-black tracking-wider uppercase z-10 transition-all ${isFullscreen ? '-top-5 md:-top-6 px-6 md:px-10 py-1 md:py-2 border-[3px] md:border-[4px] text-lg md:text-2xl whitespace-nowrap' : '-top-5 px-5 py-1 border-[3px] text-sm md:text-base whitespace-nowrap'}`}>
                 {t.lucky}
               </div>
 
               {allStudents.length === 0 ? (
-                <div className={`text-slate-300 font-bold flex flex-col items-center gap-2 ${isFullscreen ? 'text-4xl' : 'text-lg'}`}>
-                  <Users size={isFullscreen ? 96 : 48} className="opacity-50" />
-                  <span className="text-[#2B2D42] opacity-60">{t.awaiting}</span>
+                <div className={`text-slate-300 font-bold flex flex-col items-center gap-2 ${isFullscreen ? 'text-2xl md:text-4xl' : 'text-lg'}`}>
+                  <Users size={isFullscreen ? 64 : 48} className="opacity-50 md:w-[96px] md:h-[96px]" />
+                  <span className="text-[#2B2D42] opacity-60 text-center">{t.awaiting}</span>
                 </div>
               ) : (
                 <div className="w-full h-full flex items-center justify-center overflow-hidden px-2 md:px-6">
                   {isDrawing ? (
-                    <div className={`text-center font-black text-[#FF4D6D]/40 italic leading-tight w-full break-words ${isFullscreen ? 'text-[72px] md:text-[96px]' : 'text-[36px] md:text-[46px]'}`}>
+                    <div className={`text-center font-black text-[#FF4D6D]/40 italic leading-tight w-full break-words ${isFullscreen ? 'text-[50px] sm:text-[72px] md:text-[96px]' : 'text-[36px] md:text-[46px]'}`}>
                       {currentDraw}
                     </div>
                   ) : (
@@ -379,13 +379,13 @@ export default function App() {
                           initial={{ opacity: 0, scale: 0.5, y: 20 }}
                           animate={{ opacity: 1, scale: 1, y: 0 }}
                           transition={{ type: 'spring', bounce: 0.5, duration: 0.5 }}
-                          className={`text-center font-black text-[#FF4D6D] leading-snug w-full break-words max-h-full overflow-hidden ${isFullscreen ? 'text-[80px] md:text-[110px]' : 'text-[40px] md:text-[56px]'}`}
+                          className={`text-center font-black text-[#FF4D6D] leading-snug w-full break-words max-h-full overflow-hidden ${isFullscreen ? 'text-[56px] sm:text-[80px] md:text-[110px]' : 'text-[40px] md:text-[56px]'}`}
                           style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}
                         >
                           {currentDraw}
                         </motion.div>
                       ) : (
-                        <div className={`text-slate-200 font-black ${isFullscreen ? 'text-[150px]' : 'text-6xl'}`}>?</div>
+                        <div className={`text-slate-200 font-black ${isFullscreen ? 'text-[80px] md:text-[150px]' : 'text-6xl'}`}>?</div>
                       )}
                     </AnimatePresence>
                   )}
@@ -393,7 +393,7 @@ export default function App() {
               )}
             </div>
 
-            <div className={`flex flex-col items-center relative z-10 w-full px-2 md:px-0 transition-all ${isFullscreen ? 'gap-[24px] max-w-[600px]' : 'gap-[16px] max-w-[400px]'}`}>
+            <div className={`flex flex-col items-center relative z-10 w-full px-2 md:px-0 transition-all ${isFullscreen ? 'gap-[16px] md:gap-[24px] max-w-[600px]' : 'gap-[16px] max-w-[400px]'}`}>
               <motion.button
                 animate={(!isDrawing && remaining.length > 0 && allStudents.length > 0) ? { 
                   y: [0, -6, 0],
@@ -406,33 +406,33 @@ export default function App() {
                 className={`w-full font-black text-white bg-[#FF4D6D] border-[#2B2D42] flex items-center justify-center transition-all ${
                   isDrawing || allStudents.length === 0 || remaining.length === 0 
                     ? 'opacity-50 cursor-not-allowed translate-y-[10px] shadow-none bg-[#999]' 
-                    : `active:translate-y-[10px] active:shadow-none hover:brightness-110 ${isFullscreen ? 'shadow-[0_14px_0_#9d1c33]' : 'shadow-[0_10px_0_#9d1c33]'}`
-                } ${isFullscreen ? 'py-[32px] text-[48px] border-[6px] rounded-[80px] gap-5' : 'py-[20px] md:py-[24px] text-[28px] md:text-[32px] border-[4px] rounded-[50px] gap-3'}`}
+                    : `active:translate-y-[10px] active:shadow-none hover:brightness-110 ${isFullscreen ? 'shadow-[0_10px_0_#9d1c33] md:shadow-[0_14px_0_#9d1c33]' : 'shadow-[0_10px_0_#9d1c33]'}`
+                } ${isFullscreen ? 'py-[24px] md:py-[32px] text-[32px] md:text-[48px] border-[5px] md:border-[6px] rounded-[60px] md:rounded-[80px] gap-3 md:gap-5' : 'py-[20px] md:py-[24px] text-[28px] md:text-[32px] border-[4px] rounded-[50px] gap-3'}`}
               >
-                {!isDrawing && <Play size={isFullscreen ? 56 : 36} fill="currentColor" className={allStudents.length > 0 && remaining.length > 0 ? "animate-pulse" : ""} />}
-                <span className="tracking-widest uppercase">{allStudents.length === 0 ? t.draw : remaining.length === 0 ? t.done : t.draw}</span>
+                {!isDrawing && <Play size={isFullscreen ? 40 : 36} fill="currentColor" className={`md:w-[56px] md:h-[56px] ${allStudents.length > 0 && remaining.length > 0 ? "animate-pulse" : ""}`} />}
+                <span className="tracking-widest uppercase truncate">{allStudents.length === 0 ? t.draw : remaining.length === 0 ? t.done : t.draw}</span>
               </motion.button>
 
-              <div className="flex flex-col items-center gap-4 w-full mt-4">
-                <div className={`text-[#2B2D42]/60 font-black flex items-center justify-center gap-2 -mt-1 tracking-wider ${isFullscreen ? 'text-[20px]' : 'text-[14px]'}`}>
-                  <span className={`animate-bounce ${isFullscreen ? 'text-4xl' : 'text-xl'}`}>↑</span> {t.clickToSelect}
+              <div className="flex flex-col items-center gap-4 w-full mt-2 md:mt-4">
+                <div className={`text-[#2B2D42]/60 font-black flex items-center justify-center gap-2 -mt-1 tracking-wider ${isFullscreen ? 'text-[16px] md:text-[20px] text-center' : 'text-[14px]'}`}>
+                  <span className={`animate-bounce ${isFullscreen ? 'text-2xl md:text-4xl' : 'text-xl'}`}>↑</span> {t.clickToSelect}
                 </div>
-                <div className={`flex flex-col sm:flex-row items-center justify-center w-full transition-all ${isFullscreen ? 'gap-8 mt-6' : 'gap-4 mt-4'}`}>
+                <div className={`flex flex-col sm:flex-row items-center justify-center w-full transition-all ${isFullscreen ? 'gap-4 md:gap-8 mt-2 md:mt-6' : 'gap-4 mt-4'}`}>
                   <button 
                     onClick={() => setShowSettings(!showSettings)}
-                    className={`w-full sm:w-auto flex items-center justify-center gap-2 rounded-[50px] transition-all border-[#2B2D42] font-bold outline-none active:translate-y-[4px] active:shadow-none bg-[#FFB703] text-[#2B2D42] hover:bg-[#ffc633] ${isFullscreen ? 'px-10 py-[18px] text-[24px] border-[4px] shadow-[0_6px_0_#2B2D42]' : 'px-6 py-[12px] text-[16px] border-[3px] shadow-[0_4px_0_#2B2D42]'}`}
+                    className={`w-full sm:w-auto flex items-center justify-center gap-2 rounded-[50px] transition-all border-[#2B2D42] font-bold outline-none active:translate-y-[4px] active:shadow-none bg-[#FFB703] text-[#2B2D42] hover:bg-[#ffc633] ${isFullscreen ? 'px-6 md:px-10 py-[14px] md:py-[18px] text-[18px] md:text-[24px] border-[3px] md:border-[4px] shadow-[0_4px_0_#2B2D42] md:shadow-[0_6px_0_#2B2D42] whitespace-nowrap' : 'px-6 py-[12px] text-[16px] border-[3px] shadow-[0_4px_0_#2B2D42]'}`}
                     title={t.toggleSettings}
                   >
-                     {showSettings ? <X size={isFullscreen ? 28 : 18} strokeWidth={2.5} /> : <Edit3 size={isFullscreen ? 28 : 18} strokeWidth={2.5} />}
+                     {showSettings ? <X size={isFullscreen ? 24 : 18} strokeWidth={2.5} className="md:w-[28px] md:h-[28px]" /> : <Edit3 size={isFullscreen ? 24 : 18} strokeWidth={2.5} className="md:w-[28px] md:h-[28px]" />}
                      <span>{showSettings ? t.closeList : t.editList}</span>
                   </button>
                   <button 
                       onClick={resetDraw}
                       disabled={isDrawing || drawn.length === 0}
-                      className={`w-full sm:w-auto font-bold bg-[#f0f0f0] text-[#2B2D42] border-[#2B2D42] rounded-[50px] hover:bg-white active:translate-y-[4px] active:shadow-none transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${isFullscreen ? 'px-10 py-[18px] text-[24px] border-[4px] shadow-[0_6px_0_#2B2D42]' : 'px-6 py-[12px] text-[16px] border-[3px] shadow-[0_4px_0_#2B2D42]'}`}
+                      className={`w-full sm:w-auto font-bold bg-[#f0f0f0] text-[#2B2D42] border-[#2B2D42] rounded-[50px] hover:bg-white active:translate-y-[4px] active:shadow-none transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${isFullscreen ? 'px-6 md:px-10 py-[14px] md:py-[18px] text-[18px] md:text-[24px] border-[3px] md:border-[4px] shadow-[0_4px_0_#2B2D42] md:shadow-[0_6px_0_#2B2D42] whitespace-nowrap' : 'px-6 py-[12px] text-[16px] border-[3px] shadow-[0_4px_0_#2B2D42]'}`}
                       title={t.reset}
                   >
-                    <RotateCcw size={isFullscreen ? 28 : 18} strokeWidth={2.5} />
+                    <RotateCcw size={isFullscreen ? 24 : 18} strokeWidth={2.5} className="md:w-[28px] md:h-[28px]" />
                     {t.reset}
                   </button>
                 </div>
