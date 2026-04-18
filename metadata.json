@@ -1,0 +1,6 @@
+{
+  "name": "Classroom Random Student Picker",
+  "description": "A fast and interactive web app for teachers to randomly draw students from a customizable list. Features history tracking, list randomization, and confetti animations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
